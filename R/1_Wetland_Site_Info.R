@@ -112,5 +112,7 @@ df<-st_join(wetlands, df) %>%
 m<-mapview(df)
 
 #Export results
-setwd("docs/")
-mapshot(m, "wetlands.html")
+df %>% st_drop_geometry %>% distinct() %>%  write.csv(., "docs/wetland_info.csv")
+
+# setwd("docs/")
+# mapshot(m, "wetlands.html")
