@@ -63,6 +63,10 @@ bc<-bc %>%
 #combine
 df<-bind_rows(syn, jl, bc)
 
+#Correct location of gnarly bay
+df$lon[df$site_id == "XB-SW"] <- -75.83250 
+df$lat[df$site_id == "XB-SW"] <- 39.05342
+
 #create simple feature
 df<-st_as_sf(df, coords = c("lon", "lat"), crs = '+proj=longlat +datum=WGS84 +no_defs')
 
